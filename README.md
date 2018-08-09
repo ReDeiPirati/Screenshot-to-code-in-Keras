@@ -1,28 +1,28 @@
 # Turning design mockups into code with deep learning
 [![Paypal Donation](https://img.shields.io/badge/%E2%98%95%EF%B8%8F%20Flat%20white-Donate%20%245-brightgreen.svg)](https://www.paypal.me/EmilWallner)
 [![Paypal Donation](https://img.shields.io/badge/%F0%9F%8D%BB%20IPA-Donate%20%249-orange.svg)](https://www.paypal.me/EmilWallner)
-[![Cloud GPU](https://img.shields.io/badge/Run%20on-FloydHub-blue.svg)](https://www.floydhub.com/emilwallner/projects/picturetocode)
+[![Run on FH](https://img.shields.io/badge/Run%20on-FloydHub-blue.svg)](https://floydhub.com/run?template=https://github.com/floydhub/pix2code-template)
 [![MIT](https://img.shields.io/cocoapods/l/AFNetworking.svg)](https://github.com/emilwallner/Screenshot-to-code-in-Keras/blob/master/LICENSE)
 
-This is the code for the article ['Turning design mockups into code with deep learning'](https://blog.floydhub.com/Turning-design-mockups-into-code-with-deep-learning/) on FloydHub's blog. 
+This is the code for the article ['Turning design mockups into code with deep learning'](https://blog.floydhub.com/Turning-design-mockups-into-code-with-deep-learning/) on FloydHub's blog.
 
 Within three years deep learning will change front-end development. It will increase prototyping speed and lower the barrier for building software.
 
-The field took off last year when Tony Beltramelli introduced the [pix2code paper](https://arxiv.org/abs/1705.07962) and Airbnb launched [sketching interfaces](https://airbnb.design/sketching-interfaces/). 
+The field took off last year when Tony Beltramelli introduced the [pix2code paper](https://arxiv.org/abs/1705.07962) and Airbnb launched [sketching interfaces](https://airbnb.design/sketching-interfaces/).
 
 Currently, the largest barrier to automating front-end development is computing power. However, we can use current deep learning algorithms, along with synthesized training data, to start exploring artificial front-end automation right now.
 
 In the provided models, we’ll teach a neural network how to code a basic HTML and CSS website based on a picture of a design mockup.
 
-We’ll build the neural network in three iterations. Starting with a Hello World version, followed by the main neural network layers, and ending by training it to generalize. 
+We’ll build the neural network in three iterations. Starting with a Hello World version, followed by the main neural network layers, and ending by training it to generalize.
 
-A quick overview of the process: 
+A quick overview of the process:
 
 ### 1) Give a design image to the trained neural network
 
 ![Insert image](https://i.imgur.com/LDmoLLV.png)
 
-### 2) The neural network converts the image into HTML markup 
+### 2) The neural network converts the image into HTML markup
 
 <img src="/README_images/html_display.gif?raw=true" width="800px">
 
@@ -33,13 +33,19 @@ A quick overview of the process:
 
 ## Installation
 
+### Run on FloydHub
+
+[![Run on FloydHub](https://static.floydhub.com/button/button.svg)](https://floydhub.com/run?template=https://github.com/floydhub/pix2code-template)
+
+Click this button to open a [Workspace](https://blog.floydhub.com/workspaces/) on [FloydHub](https://www.floydhub.com/?utm_medium=readme&utm_source=pix2code&utm_campaign=aug_2018). In this workspace you will find the same environment, dataset and also the trained models used for the Bootstrap version.
+
 ### FloydHub
 FloydHub is hands down the best option to run models on cloud GPUs: [floydhub.com](https://www.floydhub.com/)
 ``` bash
 pip install floyd-cli
 floyd login
 git clone https://github.com/emilwallner/Screenshot-to-code-in-Keras
-cd Screenshot-to-code-in-Keras/floydhub 
+cd Screenshot-to-code-in-Keras/floydhub
 floyd init projectname
 floyd run --gpu --env tensorflow-1.4 --data emilwallner/datasets/imagetocode/2:data --data emilwallner/datasets/html_models/1:weights --mode jupyter
 ```
@@ -64,14 +70,14 @@ The final version, the Bootstrap version, is prepared with a small set to test r
   |  |  |-compiler                         #A compiler to turn the tokens to HTML/CSS (by pix2code)
   |  |-Hello_world                         #The Hello World version
   |  |-HTML                                #The HTML version
-  |  |  |-resources									
+  |  |  |-resources
   |  |  |  |-Resources_for_index_file      #CSS and images to test index.html file
   |  |  |  |-html                          #HTML files to train it on
   |  |  |  |-images                        #Screenshots for training
   |-local                                  #Local setup
   |  |-Bootstrap                           #The Bootstrap version
   |  |  |-compiler                         #A compiler to turn the tokens to HTML/CSS (by pix2code)
-  |  |  |-resources											
+  |  |  |-resources
   |  |  |  |-eval_light                    #10 test images and markup
   |  |-Hello_world                         #The Hello World version
   |  |-HTML                                #The HTML version
